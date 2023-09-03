@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id Int @id @default(autoincrement()) 
+  name String
+  email String @unique
+  password String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("admin")
+}
+
+model User {
+   id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  password String
+  cpf String
+  telefone String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("user")
+  enderecoId Int
+  endereco Endereco @relation(fields: [enderecoId], references: [id])
+  pedido Pedido []
+}
+
+model Endereco{
+   id Int @id @default(autoincrement())
+  rua String
+  complemento String
+  numero Int
+  bairro String
+  cidade String
+  uf String
+  cep Int
+  @@map("endereco")
+  user User []
+}
+
+model Produto {
+   id Int @id @default(autoincrement())
+  nome String
+  descricao String
+  preco Float
+  qntEstoque Int
+  categotia String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("produto")
+  itemPedido itemPedido []
+}
+
+model Pedido{
+   id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("pedido")
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  status String
+  qntProduto Int
+  valorTotal Float
+  itemPedido itemPedido []
+}
+
+model itemPedido{
+   id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("itemPedido")
+  pedido Pedido @relation(fields: [pedidoId], references: [id])
+  pedidoId Int
+  produto Produto @relation(fields: [produtoId], references: [id])
+  produtoId Int
+  qntProduto Int
+  valorTotal Float
+}
