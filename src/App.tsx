@@ -1,10 +1,10 @@
-
-import Login from './components/login'
+import Cadastro from './components/cadastro'
+//import Login from './components/login'
 
 function App() {
   return (
     <>
-      <Login />
+      <Cadastro />
     </>
   )
 }

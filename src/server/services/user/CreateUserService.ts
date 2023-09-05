@@ -1,18 +1,18 @@
 import prismaClient from "../../../prisma";
 import { hash } from "bcryptjs";
 
+
 interface IUserRequest {
     name: string;  
     email: string;
     password: string;
     cpf?: string; // Propriedade opcional
     telefone?: string; // Propriedade opcional
-    enderecots?: string; // Propriedade opcional
+    endereco?: string; // Propriedade opcional
 }
 
-
 class CreateUserService {
-    async execute({name, email, password}: IUserRequest) {
+    async execute({name, email, password,}: IUserRequest) {
         if (!email) {
             throw new Error("Email incorrect");
         }
@@ -36,7 +36,7 @@ class CreateUserService {
                 password: passwordHash,
                 cpf: 'valor_padrao_cpf',
                 telefone: 'valor_padrao_telefone',
-                enderecots: 'valor_padrao_enderecots'
+                endereco: endereco.data
             },
             select: {
                 id: true,

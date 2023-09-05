@@ -30,6 +30,11 @@ export default function Login() {
     });
   };
 
+  function Login() {
+    
+
+  }
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -82,6 +87,7 @@ export default function Login() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={Login}
             >
               Sign In
             </Button>
