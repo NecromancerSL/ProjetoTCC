@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { CreateUserController } from "./controllers/user/CreateUserController";
 import { AuthUserController } from "./controllers/user/AuthUserController";
+import { CreateEnderecoController } from "./controllers/endereco/CreateEnderecoController";
 
 const router = Router();
 //router.get('/teste',(req: Request, res: Response ) => {
@@ -10,5 +11,6 @@ const router = Router();
 
 router.post('/users', new CreateUserController().handle);
 router.post('/session', new AuthUserController().handle);
+router.post('/adress', new CreateEnderecoController().handle);
 
 export { router };
