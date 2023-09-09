@@ -11,7 +11,7 @@ interface IEnderecoRequest {
 }
 
 class CreateEnderecoService {
-    async execute({ rua, numero, complemento, bairro, cep, cidade, uf, }: IEnderecoRequest) {
+    async execute({ rua, numero, complemento, bairro, cidade, uf, cep }: IEnderecoRequest) {
         if (!rua) {
         throw new Error("Rua incorrect");
         }
@@ -32,9 +32,9 @@ class CreateEnderecoService {
             numero,
             complemento,
             bairro,
-            cep,
             cidade,
             uf,
+            cep,
         },
         select: {
             id: true,
@@ -42,9 +42,9 @@ class CreateEnderecoService {
             numero: true,
             complemento: true,
             bairro: true,
-            cep: true,
             cidade: true,
             uf: true,
+            cep: true,
         },
         });
 

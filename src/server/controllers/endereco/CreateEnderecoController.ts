@@ -3,7 +3,7 @@ import { CreateEnderecoService } from "../../services/endereco/CreateEnderecoSer
 
 class CreateEnderecoController {
   async handle(request: Request, response: Response) {
-    const { rua, numero, complemento, bairro, cep, cidade, uf } = request.body;
+    const { rua, numero, complemento, bairro, cidade, uf, cep } = request.body;
 
     try {
       const createEnderecoService = new CreateEnderecoService();
@@ -12,9 +12,9 @@ class CreateEnderecoController {
         numero,
         complemento,
         bairro,
-        cep,
         cidade,
         uf,
+        cep,
       });
 
       return response.json(endereco);

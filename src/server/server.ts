@@ -21,4 +21,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
         message: 'Internal server error'
     })
 })
-app.listen(3333, () => console.log("SERVER ONLINE :)"))
+app.listen(5173, () => console.log("SERVER ONLINE :)"))

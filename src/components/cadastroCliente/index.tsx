@@ -35,7 +35,8 @@ const initialUser: User = {
   },
 };
 
-function Cadastro() {
+function cadastroCliente() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [user, setUser] = useState<User>(initialUser);
 
   const handleChange = (
@@ -201,4 +202,4 @@ function Cadastro() {
   );
 }
 
-export default Cadastro;
+export default cadastroCliente;

@@ -35,15 +35,16 @@ class CreateUserService {
         password: passwordHash,
         cpf: cpf || 'valor_padrao_cpf', // Valor padrão ou valor opcional
         telefone: telefone || 'valor_padrao_telefone', // Valor padrão ou valor opcional
-        endereco: {
-          connect: {
-            id: enderecoId || 1, // Valor padrão ou valor opcional
-          },
-        },
+        enderecoId: enderecoId || 1, // Valor padrão ou valor opcional
       },
-      include: {
-        endereco: true,
-      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        cpf: true,
+        telefone: true,
+        enderecoId: true,
+      }
     });
 
     return user;
